@@ -61,7 +61,7 @@ namespace GradationPatternGen
             {
                 if(start_color>stop_color)
                 {
-                    int target_color = start_color - (int)((double)cnt * color_increase);
+                    int target_color = (int)Math.Round((double)start_color - ((double)cnt * color_increase), 0);
                     if (target_color < 0)
                     {
                         target_color = 0;
@@ -71,8 +71,8 @@ namespace GradationPatternGen
                 }
                 else
                 {
-                    int target_color = start_color + (int)((double)cnt * color_increase);
-                    if(target_color>255)
+                    int target_color = (int)Math.Round((double)start_color + ((double)cnt * color_increase), 0);
+                    if (target_color>255)
                     {
                         target_color = 255;
                     }
