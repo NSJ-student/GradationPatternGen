@@ -54,25 +54,29 @@ namespace GradationPatternGen
             }
 
             int width_increase = width / divide;
-            double color_increase = (double)Math.Abs(start_color-stop_color) / (double)divide;
+            double color_increase = (double)Math.Abs(start_color-stop_color) / (double)(divide-1);
             TestImage = new Bitmap(width, hegiht);
             Graphics curGraphics = Graphics.FromImage(TestImage);
             for(int cnt=0; cnt<divide; cnt++)
             {
                 if(start_color>stop_color)
                 {
-                    SolidBrush brush = new SolidBrush(Color.FromArgb(
-                        start_color - (int)((double)cnt * color_increase),
-                        start_color - (int)((double)cnt * color_increase),
-                        start_color - (int)((double)cnt * color_increase)));
+                    int target_color = start_color - (int)((double)cnt * color_increase);
+                    if (target_color < 0)
+                    {
+                        target_color = 0;
+                    }
+                    SolidBrush brush = new SolidBrush(Color.FromArgb(target_color, target_color, target_color));
                     curGraphics.FillRectangle(brush, cnt * width_increase, 0, width_increase, hegiht);
                 }
                 else
                 {
-                    SolidBrush brush = new SolidBrush(Color.FromArgb(
-                        start_color + (int)((double)cnt * color_increase),
-                        start_color + (int)((double)cnt * color_increase),
-                        start_color + (int)((double)cnt * color_increase)));
+                    int target_color = start_color + (int)((double)cnt * color_increase);
+                    if(target_color>255)
+                    {
+                        target_color = 255;
+                    }
+                    SolidBrush brush = new SolidBrush(Color.FromArgb(target_color, target_color, target_color));
                     curGraphics.FillRectangle(brush, cnt * width_increase, 0, width_increase, hegiht);
                 }
             }
