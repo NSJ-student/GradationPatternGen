@@ -1,4 +1,4 @@
-# ImageToArray
+# GradationPatternGen
 
 개발 툴: Visual Studio 2019
 
