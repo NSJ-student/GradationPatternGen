@@ -27,20 +27,18 @@ namespace GradationPatternGen
                 MessageBox.Show("no size", "Show");
                 return;
             }
-            if ((txtStartColor == null) || (txtStopColor == null))
-            {
-                MessageBox.Show("no color", "Show");
-                return;
-            }
             if(txtDivideNum == null)
             {
                 MessageBox.Show("no divide", "Show");
                 return;
             }
+            if ((txtStartColor == null) || (txtStopColor == null))
+            {
+                MessageBox.Show("no color", "Show");
+                return;
+            }
             int width = Convert.ToInt32(txtImageWidth.Text);
             int hegiht = Convert.ToInt32(txtImageHeight.Text);
-            int start_color = Convert.ToInt32(txtStartColor.Text);
-            int stop_color = Convert.ToInt32(txtStopColor.Text);
             int divide = Convert.ToInt32(txtDivideNum.Text);
             if ((width == 0) || (hegiht == 0))
             {
@@ -52,37 +50,66 @@ namespace GradationPatternGen
                 MessageBox.Show("divide zero", "Show");
                 return;
             }
+            int start_color = Convert.ToInt32(txtStartColor.Text);
+            int stop_color = Convert.ToInt32(txtStopColor.Text);
 
-            int width_increase = width / divide;
-            double color_increase = (double)Math.Abs(start_color-stop_color) / (double)(divide-1);
-            TestImage = new Bitmap(width, hegiht);
-            Graphics curGraphics = Graphics.FromImage(TestImage);
-            for(int cnt=0; cnt<divide; cnt++)
+            if (cbStripes.Checked)
             {
-                if(start_color>stop_color)
+                int width_increase = width / divide;
+                TestImage = new Bitmap(width, hegiht);
+                Graphics curGraphics = Graphics.FromImage(TestImage);
+                for (int cnt = 0; cnt < divide; cnt++)
                 {
-                    int target_color = (int)Math.Round((double)start_color - ((double)cnt * color_increase), 0);
-                    if (target_color < 0)
+                    if (cnt%2 == 0)
                     {
-                        target_color = 0;
+                        SolidBrush brush = new SolidBrush(Color.FromArgb(start_color, start_color, start_color));
+                        curGraphics.FillRectangle(brush, cnt * width_increase, 0, width_increase, hegiht);
                     }
-                    SolidBrush brush = new SolidBrush(Color.FromArgb(target_color, target_color, target_color));
-                    curGraphics.FillRectangle(brush, cnt * width_increase, 0, width_increase, hegiht);
+                    else
+                    {
+                        SolidBrush brush = new SolidBrush(Color.FromArgb(stop_color, stop_color, stop_color));
+                        curGraphics.FillRectangle(brush, cnt * width_increase, 0, width_increase, hegiht);
+                    }
                 }
-                else
+
+                ShowImage ImageForm = new ShowImage(TestImage);
+                ImageForm.Visible = true;
+                return;
+            }
+            else
+            {
+                int width_increase = width / divide;
+                double color_increase = (double)Math.Abs(start_color - stop_color) / (double)(divide - 1);
+                TestImage = new Bitmap(width, hegiht);
+                Graphics curGraphics = Graphics.FromImage(TestImage);
+                for (int cnt = 0; cnt < divide; cnt++)
                 {
-                    int target_color = (int)Math.Round((double)start_color + ((double)cnt * color_increase), 0);
-                    if (target_color>255)
+                    if (start_color > stop_color)
                     {
-                        target_color = 255;
+                        int target_color = (int)Math.Round((double)start_color - ((double)cnt * color_increase), 0);
+                        if (target_color < 0)
+                        {
+                            target_color = 0;
+                        }
+                        SolidBrush brush = new SolidBrush(Color.FromArgb(target_color, target_color, target_color));
+                        curGraphics.FillRectangle(brush, cnt * width_increase, 0, width_increase, hegiht);
                     }
-                    SolidBrush brush = new SolidBrush(Color.FromArgb(target_color, target_color, target_color));
-                    curGraphics.FillRectangle(brush, cnt * width_increase, 0, width_increase, hegiht);
+                    else
+                    {
+                        int target_color = (int)Math.Round((double)start_color + ((double)cnt * color_increase), 0);
+                        if (target_color > 255)
+                        {
+                            target_color = 255;
+                        }
+                        SolidBrush brush = new SolidBrush(Color.FromArgb(target_color, target_color, target_color));
+                        curGraphics.FillRectangle(brush, cnt * width_increase, 0, width_increase, hegiht);
+                    }
                 }
+
+                ShowImage ImageForm = new ShowImage(TestImage);
+                ImageForm.Visible = true;
             }
 
-            ShowImage ImageForm = new ShowImage(TestImage);
-            ImageForm.Visible = true;
         }
 
 		private void btnSave_Click(object sender, EventArgs e)
@@ -103,6 +130,11 @@ namespace GradationPatternGen
         }
 
         private void ImageToArray_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbStripes_CheckedChanged(object sender, EventArgs e)
         {
 
         }

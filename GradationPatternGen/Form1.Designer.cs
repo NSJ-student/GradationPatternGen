@@ -41,6 +41,7 @@
             this.txtStopColor = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtDivideNum = new System.Windows.Forms.TextBox();
+            this.cbStripes = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnShowImage
@@ -48,7 +49,7 @@
             this.btnShowImage.Location = new System.Drawing.Point(236, 10);
             this.btnShowImage.Name = "btnShowImage";
             this.btnShowImage.Size = new System.Drawing.Size(75, 75);
-            this.btnShowImage.TabIndex = 4;
+            this.btnShowImage.TabIndex = 6;
             this.btnShowImage.Text = "Convert Image";
             this.btnShowImage.UseVisualStyleBackColor = true;
             this.btnShowImage.Click += new System.EventHandler(this.btnShowImage_Click);
@@ -58,7 +59,7 @@
             this.btnSave.Location = new System.Drawing.Point(236, 107);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 5;
+            this.btnSave.TabIndex = 8;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -68,7 +69,7 @@
             this.tbSaveName.Location = new System.Drawing.Point(15, 109);
             this.tbSaveName.Name = "tbSaveName";
             this.tbSaveName.Size = new System.Drawing.Size(216, 21);
-            this.tbSaveName.TabIndex = 6;
+            this.tbSaveName.TabIndex = 7;
             // 
             // label1
             // 
@@ -84,14 +85,14 @@
             this.txtImageWidth.Location = new System.Drawing.Point(96, 10);
             this.txtImageWidth.Name = "txtImageWidth";
             this.txtImageWidth.Size = new System.Drawing.Size(50, 21);
-            this.txtImageWidth.TabIndex = 13;
+            this.txtImageWidth.TabIndex = 0;
             // 
             // txtImageHeight
             // 
             this.txtImageHeight.Location = new System.Drawing.Point(169, 10);
             this.txtImageHeight.Name = "txtImageHeight";
             this.txtImageHeight.Size = new System.Drawing.Size(50, 21);
-            this.txtImageHeight.TabIndex = 13;
+            this.txtImageHeight.TabIndex = 1;
             // 
             // label2
             // 
@@ -125,14 +126,14 @@
             this.txtStartColor.Location = new System.Drawing.Point(96, 37);
             this.txtStartColor.Name = "txtStartColor";
             this.txtStartColor.Size = new System.Drawing.Size(50, 21);
-            this.txtStartColor.TabIndex = 13;
+            this.txtStartColor.TabIndex = 2;
             // 
             // txtStopColor
             // 
             this.txtStopColor.Location = new System.Drawing.Point(169, 37);
             this.txtStopColor.Name = "txtStopColor";
             this.txtStopColor.Size = new System.Drawing.Size(50, 21);
-            this.txtStopColor.TabIndex = 13;
+            this.txtStopColor.TabIndex = 3;
             // 
             // label5
             // 
@@ -148,13 +149,25 @@
             this.txtDivideNum.Location = new System.Drawing.Point(96, 64);
             this.txtDivideNum.Name = "txtDivideNum";
             this.txtDivideNum.Size = new System.Drawing.Size(50, 21);
-            this.txtDivideNum.TabIndex = 13;
+            this.txtDivideNum.TabIndex = 4;
+            // 
+            // cbStripes
+            // 
+            this.cbStripes.AutoSize = true;
+            this.cbStripes.Location = new System.Drawing.Point(157, 66);
+            this.cbStripes.Name = "cbStripes";
+            this.cbStripes.Size = new System.Drawing.Size(62, 16);
+            this.cbStripes.TabIndex = 5;
+            this.cbStripes.Text = "stripes";
+            this.cbStripes.UseVisualStyleBackColor = true;
+            this.cbStripes.CheckedChanged += new System.EventHandler(this.cbStripes_CheckedChanged);
             // 
             // GradationPatternGen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(323, 142);
+            this.Controls.Add(this.cbStripes);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtImageHeight);
@@ -192,6 +205,7 @@
         private System.Windows.Forms.TextBox txtStopColor;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtDivideNum;
+        private System.Windows.Forms.CheckBox cbStripes;
     }
 }
 
