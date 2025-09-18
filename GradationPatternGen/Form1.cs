@@ -41,9 +41,9 @@ namespace GradationPatternGen
                 return;
             }
             int width = Convert.ToInt32(txtImageWidth.Text);
-            int hegiht = Convert.ToInt32(txtImageHeight.Text);
+            int height = Convert.ToInt32(txtImageHeight.Text);
             int divide = Convert.ToInt32(txtDivideNum.Text);
-            if ((width == 0) || (hegiht == 0))
+            if ((width == 0) || (height == 0))
             {
                 MessageBox.Show("size zero", "Show");
                 return;
@@ -66,9 +66,17 @@ namespace GradationPatternGen
                 stop_color = 255;
             }
 
-            int width_increase = width / divide;
+            int length_increase;
+            if (rbHorizontal.Checked)
+            {
+                length_increase = width / divide;
+            }
+            else
+            {
+                length_increase = height / divide;
+            }
             double color_increase = (double)Math.Abs(start_color - stop_color) / (double)(divide - 1);
-            TestImage = new Bitmap(width, hegiht);
+            TestImage = new Bitmap(width, height);
             Graphics curGraphics = Graphics.FromImage(TestImage);
             for (int cnt = 0; cnt < divide; cnt++)
             {
@@ -79,8 +87,32 @@ namespace GradationPatternGen
                     {
                         target_color = 0;
                     }
-                    SolidBrush brush = new SolidBrush(Color.FromArgb(target_color, target_color, target_color));
-                    curGraphics.FillRectangle(brush, cnt * width_increase, 0, width_increase, hegiht);
+
+                    SolidBrush brush;
+                    if (rbGradR.Checked)
+                    {
+                        brush = new SolidBrush(Color.FromArgb(target_color, 0, 0));
+                    }
+                    else if(rbGradG.Checked)
+                    {
+                        brush = new SolidBrush(Color.FromArgb(0, target_color, 0));
+                    }
+                    else if(rbGradB.Checked)
+                    {
+                        brush = new SolidBrush(Color.FromArgb(0, 0, target_color));
+                    }
+                    else
+                    {
+                        brush = new SolidBrush(Color.FromArgb(target_color, target_color, target_color));
+                    }
+                    if(rbHorizontal.Checked)
+                    {
+                        curGraphics.FillRectangle(brush, cnt * length_increase, 0, length_increase, height);
+                    }
+                    else
+                    {
+                        curGraphics.FillRectangle(brush, 0, cnt * length_increase, width, length_increase);
+                    }
                 }
                 else
                 {
@@ -89,8 +121,79 @@ namespace GradationPatternGen
                     {
                         target_color = 255;
                     }
-                    SolidBrush brush = new SolidBrush(Color.FromArgb(target_color, target_color, target_color));
-                    curGraphics.FillRectangle(brush, cnt * width_increase, 0, width_increase, hegiht);
+
+                    SolidBrush brush;
+                    if (rbGradR.Checked)
+                    {
+                        brush = new SolidBrush(Color.FromArgb(target_color, 0, 0));
+                    }
+                    else if (rbGradG.Checked)
+                    {
+                        brush = new SolidBrush(Color.FromArgb(0, target_color, 0));
+                    }
+                    else if (rbGradB.Checked)
+                    {
+                        brush = new SolidBrush(Color.FromArgb(0, 0, target_color));
+                    }
+                    else
+                    {
+                        brush = new SolidBrush(Color.FromArgb(target_color, target_color, target_color));
+                    }
+
+                    if (rbHorizontal.Checked)
+                    {
+                        curGraphics.FillRectangle(brush, cnt * length_increase, 0, length_increase, height);
+                    }
+                    else
+                    {
+                        curGraphics.FillRectangle(brush, 0, cnt * length_increase, width, length_increase);
+                    }
+                }
+            }
+
+            int target;
+            if (rbHorizontal.Checked)
+            {
+                target = width;
+            }
+            else
+            {
+                target = height;
+            }
+            if ((length_increase * divide) < target)
+            {
+                int rest_length = target - (length_increase * divide);
+                int target_color = (int)Math.Round((double)start_color + ((double)(divide-1) * color_increase), 0);
+                if (target_color > 255)
+                {
+                    target_color = 255;
+                }
+
+                SolidBrush brush;
+                if (rbGradR.Checked)
+                {
+                    brush = new SolidBrush(Color.FromArgb(target_color, 0, 0));
+                }
+                else if (rbGradG.Checked)
+                {
+                    brush = new SolidBrush(Color.FromArgb(0, target_color, 0));
+                }
+                else if (rbGradB.Checked)
+                {
+                    brush = new SolidBrush(Color.FromArgb(0, 0, target_color));
+                }
+                else
+                {
+                    brush = new SolidBrush(Color.FromArgb(target_color, target_color, target_color));
+                }
+
+                if (rbHorizontal.Checked)
+                {
+                    curGraphics.FillRectangle(brush, divide * length_increase, 0, rest_length, height);
+                }
+                else
+                {
+                    curGraphics.FillRectangle(brush, 0, divide * length_increase, width, rest_length);
                 }
             }
 
@@ -387,5 +490,6 @@ namespace GradationPatternGen
         {
             Process.Start("explorer.exe", @".");
         }
+
     }
 }

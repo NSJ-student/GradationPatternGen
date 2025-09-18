@@ -41,6 +41,14 @@
             this.txtStopColor = new System.Windows.Forms.TextBox();
             this.txtDivideNum = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.rbHorizontal = new System.Windows.Forms.RadioButton();
+            this.rbVertical = new System.Windows.Forms.RadioButton();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.rbGradR = new System.Windows.Forms.RadioButton();
+            this.rbGradG = new System.Windows.Forms.RadioButton();
+            this.rbGradB = new System.Windows.Forms.RadioButton();
+            this.rbGradGr = new System.Windows.Forms.RadioButton();
             this.label9 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnIncreaseShowImage = new System.Windows.Forms.Button();
@@ -62,17 +70,19 @@
             this.txtStripeColor2 = new System.Windows.Forms.TextBox();
             this.btnStripeShowImage = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnClearLoopList = new System.Windows.Forms.Button();
             this.btnAddColor = new System.Windows.Forms.Button();
             this.listLoopColor = new System.Windows.Forms.ListBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.txtWidthPerLoopColor = new System.Windows.Forms.TextBox();
             this.txtColorToAdd = new System.Windows.Forms.TextBox();
             this.btnLoopShowImage = new System.Windows.Forms.Button();
             this.cbHexColor = new System.Windows.Forms.CheckBox();
-            this.btnClearLoopList = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtWidthPerLoopColor = new System.Windows.Forms.TextBox();
             this.btnOpenContainer = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -80,7 +90,7 @@
             // 
             // btnShowImage
             // 
-            this.btnShowImage.Location = new System.Drawing.Point(17, 130);
+            this.btnShowImage.Location = new System.Drawing.Point(18, 177);
             this.btnShowImage.Name = "btnShowImage";
             this.btnShowImage.Size = new System.Drawing.Size(131, 30);
             this.btnShowImage.TabIndex = 6;
@@ -182,6 +192,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.flowLayoutPanel2);
+            this.groupBox1.Controls.Add(this.flowLayoutPanel1);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label4);
@@ -191,10 +203,94 @@
             this.groupBox1.Controls.Add(this.btnShowImage);
             this.groupBox1.Location = new System.Drawing.Point(15, 60);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(166, 171);
+            this.groupBox1.Size = new System.Drawing.Size(166, 217);
             this.groupBox1.TabIndex = 15;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Gray Gradation (0~255)";
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.rbHorizontal);
+            this.flowLayoutPanel2.Controls.Add(this.rbVertical);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(6, 149);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(154, 21);
+            this.flowLayoutPanel2.TabIndex = 19;
+            // 
+            // rbHorizontal
+            // 
+            this.rbHorizontal.AutoSize = true;
+            this.rbHorizontal.Checked = true;
+            this.rbHorizontal.Location = new System.Drawing.Point(3, 3);
+            this.rbHorizontal.Name = "rbHorizontal";
+            this.rbHorizontal.Size = new System.Drawing.Size(31, 16);
+            this.rbHorizontal.TabIndex = 13;
+            this.rbHorizontal.TabStop = true;
+            this.rbHorizontal.Text = "H";
+            this.rbHorizontal.UseVisualStyleBackColor = true;
+            // 
+            // rbVertical
+            // 
+            this.rbVertical.AutoSize = true;
+            this.rbVertical.Location = new System.Drawing.Point(40, 3);
+            this.rbVertical.Name = "rbVertical";
+            this.rbVertical.Size = new System.Drawing.Size(31, 16);
+            this.rbVertical.TabIndex = 13;
+            this.rbVertical.Text = "V";
+            this.rbVertical.UseVisualStyleBackColor = true;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.rbGradGr);
+            this.flowLayoutPanel1.Controls.Add(this.rbGradR);
+            this.flowLayoutPanel1.Controls.Add(this.rbGradG);
+            this.flowLayoutPanel1.Controls.Add(this.rbGradB);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(6, 122);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(154, 21);
+            this.flowLayoutPanel1.TabIndex = 19;
+            // 
+            // rbGradR
+            // 
+            this.rbGradR.AutoSize = true;
+            this.rbGradR.Location = new System.Drawing.Point(45, 3);
+            this.rbGradR.Name = "rbGradR";
+            this.rbGradR.Size = new System.Drawing.Size(31, 16);
+            this.rbGradR.TabIndex = 13;
+            this.rbGradR.Text = "R";
+            this.rbGradR.UseVisualStyleBackColor = true;
+            // 
+            // rbGradG
+            // 
+            this.rbGradG.AutoSize = true;
+            this.rbGradG.Location = new System.Drawing.Point(82, 3);
+            this.rbGradG.Name = "rbGradG";
+            this.rbGradG.Size = new System.Drawing.Size(32, 16);
+            this.rbGradG.TabIndex = 13;
+            this.rbGradG.Text = "G";
+            this.rbGradG.UseVisualStyleBackColor = true;
+            // 
+            // rbGradB
+            // 
+            this.rbGradB.AutoSize = true;
+            this.rbGradB.Location = new System.Drawing.Point(120, 3);
+            this.rbGradB.Name = "rbGradB";
+            this.rbGradB.Size = new System.Drawing.Size(31, 16);
+            this.rbGradB.TabIndex = 13;
+            this.rbGradB.Text = "B";
+            this.rbGradB.UseVisualStyleBackColor = true;
+            // 
+            // rbGradGr
+            // 
+            this.rbGradGr.AutoSize = true;
+            this.rbGradGr.Checked = true;
+            this.rbGradGr.Location = new System.Drawing.Point(3, 3);
+            this.rbGradGr.Name = "rbGradGr";
+            this.rbGradGr.Size = new System.Drawing.Size(36, 16);
+            this.rbGradGr.TabIndex = 13;
+            this.rbGradGr.TabStop = true;
+            this.rbGradGr.Text = "Gr";
+            this.rbGradGr.UseVisualStyleBackColor = true;
             // 
             // label9
             // 
@@ -395,12 +491,22 @@
             this.groupBox4.Controls.Add(this.txtWidthPerLoopColor);
             this.groupBox4.Controls.Add(this.txtColorToAdd);
             this.groupBox4.Controls.Add(this.btnLoopShowImage);
-            this.groupBox4.Location = new System.Drawing.Point(15, 251);
+            this.groupBox4.Location = new System.Drawing.Point(15, 290);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(389, 130);
             this.groupBox4.TabIndex = 16;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Color Loop (0~16777215)";
+            // 
+            // btnClearLoopList
+            // 
+            this.btnClearLoopList.Location = new System.Drawing.Point(160, 53);
+            this.btnClearLoopList.Name = "btnClearLoopList";
+            this.btnClearLoopList.Size = new System.Drawing.Size(50, 25);
+            this.btnClearLoopList.TabIndex = 15;
+            this.btnClearLoopList.Text = "CLR";
+            this.btnClearLoopList.UseVisualStyleBackColor = true;
+            this.btnClearLoopList.Click += new System.EventHandler(this.btnClearLoopList_Click);
             // 
             // btnAddColor
             // 
@@ -421,6 +527,15 @@
             this.listLoopColor.Size = new System.Drawing.Size(144, 88);
             this.listLoopColor.TabIndex = 13;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(15, 59);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(91, 12);
+            this.label12.TabIndex = 12;
+            this.label12.Text = "Width per Color";
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -429,6 +544,15 @@
             this.label13.Size = new System.Drawing.Size(35, 12);
             this.label13.TabIndex = 12;
             this.label13.Text = "Color";
+            // 
+            // txtWidthPerLoopColor
+            // 
+            this.txtWidthPerLoopColor.Location = new System.Drawing.Point(117, 56);
+            this.txtWidthPerLoopColor.Name = "txtWidthPerLoopColor";
+            this.txtWidthPerLoopColor.Size = new System.Drawing.Size(32, 21);
+            this.txtWidthPerLoopColor.TabIndex = 2;
+            this.txtWidthPerLoopColor.Text = "1";
+            this.txtWidthPerLoopColor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // txtColorToAdd
             // 
@@ -452,44 +576,16 @@
             this.cbHexColor.AutoSize = true;
             this.cbHexColor.Checked = true;
             this.cbHexColor.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbHexColor.Location = new System.Drawing.Point(416, 362);
+            this.cbHexColor.Location = new System.Drawing.Point(416, 401);
             this.cbHexColor.Name = "cbHexColor";
             this.cbHexColor.Size = new System.Drawing.Size(155, 16);
             this.cbHexColor.TabIndex = 17;
             this.cbHexColor.Text = "Use Hex for Color Input";
             this.cbHexColor.UseVisualStyleBackColor = true;
             // 
-            // btnClearLoopList
-            // 
-            this.btnClearLoopList.Location = new System.Drawing.Point(160, 53);
-            this.btnClearLoopList.Name = "btnClearLoopList";
-            this.btnClearLoopList.Size = new System.Drawing.Size(50, 25);
-            this.btnClearLoopList.TabIndex = 15;
-            this.btnClearLoopList.Text = "CLR";
-            this.btnClearLoopList.UseVisualStyleBackColor = true;
-            this.btnClearLoopList.Click += new System.EventHandler(this.btnClearLoopList_Click);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(15, 59);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(91, 12);
-            this.label12.TabIndex = 12;
-            this.label12.Text = "Width per Color";
-            // 
-            // txtWidthPerLoopColor
-            // 
-            this.txtWidthPerLoopColor.Location = new System.Drawing.Point(117, 56);
-            this.txtWidthPerLoopColor.Name = "txtWidthPerLoopColor";
-            this.txtWidthPerLoopColor.Size = new System.Drawing.Size(32, 21);
-            this.txtWidthPerLoopColor.TabIndex = 2;
-            this.txtWidthPerLoopColor.Text = "1";
-            this.txtWidthPerLoopColor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // btnOpenContainer
             // 
-            this.btnOpenContainer.Location = new System.Drawing.Point(416, 327);
+            this.btnOpenContainer.Location = new System.Drawing.Point(416, 366);
             this.btnOpenContainer.Name = "btnOpenContainer";
             this.btnOpenContainer.Size = new System.Drawing.Size(155, 23);
             this.btnOpenContainer.TabIndex = 18;
@@ -501,7 +597,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(591, 397);
+            this.ClientSize = new System.Drawing.Size(591, 432);
             this.Controls.Add(this.btnOpenContainer);
             this.Controls.Add(this.cbHexColor);
             this.Controls.Add(this.groupBox4);
@@ -524,6 +620,10 @@
             this.Load += new System.EventHandler(this.ImageToArray_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.flowLayoutPanel2.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -580,6 +680,14 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtWidthPerLoopColor;
         private System.Windows.Forms.Button btnOpenContainer;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.RadioButton rbHorizontal;
+        private System.Windows.Forms.RadioButton rbVertical;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.RadioButton rbGradR;
+        private System.Windows.Forms.RadioButton rbGradG;
+        private System.Windows.Forms.RadioButton rbGradB;
+        private System.Windows.Forms.RadioButton rbGradGr;
     }
 }
 
